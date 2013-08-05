@@ -1,13 +1,10 @@
-Flow-based bioinformatics library written in Go
------------------------------------------------
+## Blow - Flow-based bioinformatics library written in Go
 
-Dependencies
-------------
-* GoFlow - https://github.com/trustmaster/goflow
+### Dependencies
+- GoFlow - https://github.com/trustmaster/goflow
 
-Related projects
-----------------
-* BioGo - https://code.google.com/p/biogo/
+### Related projects
+- BioGo - https://code.google.com/p/biogo/
 
 More info to come ...
 
