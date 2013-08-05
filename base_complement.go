@@ -16,16 +16,16 @@ type BaseComplementer struct {
 }
 
 func (bc *BaseComplementer) OnSequence(sequence []byte) {
+	baseConv := [256]byte{
+		'A': 'T',
+		'T': 'A',
+		'C': 'G',
+		'G': 'C',
+		'N': 'N',
+	}
+
 	for pos := range sequence {
-		if sequence[pos] == 'A' {
-			sequence[pos] = 'T'
-		} else if sequence[pos] == 'T' {
-			sequence[pos] = 'A'
-		} else if sequence[pos] == 'C' {
-			sequence[pos] = 'G'
-		} else if sequence[pos] == 'G' {
-			sequence[pos] = 'C'
-		}
+		sequence[pos] = baseConv[sequence[pos]]
 	}
 	bc.BaseComplementedSequence <- sequence
 }
