@@ -1,3 +1,8 @@
+// Flow process component that reads a line, line by line, into
+// byte arrays.
+// Author: Samuel Lampa
+// Created: 2013-08-06
+
 package blow
 
 import (
