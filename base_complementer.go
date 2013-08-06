@@ -9,6 +9,14 @@ import (
 	"github.com/trustmaster/goflow"
 )
 
+var baseConv = [256]byte{
+	'A': 'T',
+	'T': 'A',
+	'C': 'G',
+	'G': 'C',
+	'N': 'N',
+}
+
 type BaseComplementer struct {
 	flow.Component                         // Embedding "superclass"
 	Sequence                 <-chan []byte // Input port
@@ -16,14 +24,8 @@ type BaseComplementer struct {
 }
 
 func (bc *BaseComplementer) OnSequence(sequence []byte) {
-	baseConv := [256]byte{
-		'A': 'T',
-		'T': 'A',
-		'C': 'G',
-		'G': 'C',
-		'N': 'N',
-	}
-
+    // Copy the array
+    sequence = append([]byte(nil), sequence...)
 	for pos := range sequence {
 		sequence[pos] = baseConv[sequence[pos]]
 	}
