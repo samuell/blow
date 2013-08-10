@@ -8,11 +8,19 @@ package blow
 import (
 	"fmt"
 	"github.com/trustmaster/goflow"
+	"sync"
 )
 
 type Printer struct {
 	flow.Component
-	Line <-chan []byte // Input
+	Line      <-chan []byte // Input
+	StateLock *sync.Mutex   // Thread-safety lock
+}
+
+func NewPrinter() *Printer {
+	p := new(Printer)
+	p.StateLock = new(sync.Mutex)
+	return p
 }
 
 // Prints a line when it gets it
