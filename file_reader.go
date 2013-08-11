@@ -16,6 +16,7 @@ type FileReader struct {
 	flow.Component
 	FileName <-chan string // Input port
 	Line     chan<- []byte // Output port
+	cnt      int
 }
 
 func (fr *FileReader) OnFileName(fileName string) {
@@ -25,7 +26,10 @@ func (fr *FileReader) OnFileName(fileName string) {
 	} else {
 		scan := bufio.NewScanner(file)
 		for scan.Scan() {
-			fr.Line <- scan.Bytes()
+			line := scan.Bytes()
+			fr.cnt++
+			log.Printf("[fr][%d]: %s", fr.cnt, line)
+			fr.Line <- line
 		}
 	}
 }

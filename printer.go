@@ -8,6 +8,7 @@ package blow
 import (
 	"fmt"
 	"github.com/trustmaster/goflow"
+	"log"
 	"sync"
 )
 
@@ -15,6 +16,7 @@ type Printer struct {
 	flow.Component
 	Line      <-chan []byte // Input
 	StateLock *sync.Mutex   // Thread-safety lock
+	cnt       int
 }
 
 func NewPrinter() *Printer {
@@ -25,5 +27,7 @@ func NewPrinter() *Printer {
 
 // Prints a line when it gets it
 func (p *Printer) OnLine(line []byte) {
+	p.cnt++
+	log.Printf("[pr][%d]: %s", p.cnt, line)
 	fmt.Println(string(line))
 }
