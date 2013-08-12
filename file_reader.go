@@ -25,7 +25,11 @@ func (fr *FileReader) OnFileName(fileName string) {
 	} else {
 		scan := bufio.NewScanner(file)
 		for scan.Scan() {
-			fr.Line <- scan.Bytes()
+			// Create a copy of the current buffer slice to avoid data races
+			lineCopy := append([]byte(nil), scan.Bytes()...)
+			// Send the copy on the output port / channel
+			fr.Line <- lineCopy
 		}
+		file.Close()
 	}
 }
