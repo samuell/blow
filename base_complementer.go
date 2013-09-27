@@ -25,9 +25,11 @@ type BaseComplementer struct {
 
 func (bc *BaseComplementer) OnSequence(sequence []byte) {
     // Copy the array
-    sequence = append([]byte(nil), sequence...)
-	for pos := range sequence {
-		sequence[pos] = baseConv[sequence[pos]]
-	}
-	bc.BaseComplementedSequence <- sequence
+    // sequence = append([]byte(nil), sequence...)
+    if sequence[0] != '>' {
+        for pos := range sequence {
+            sequence[pos] = baseConv[sequence[pos]]
+        }
+        bc.BaseComplementedSequence <- sequence
+    }
 }
