@@ -1,5 +1,7 @@
 ## Blow - Flow-based bioinformatics library written in Go
 
+Status as of Sept 24 2015: Not in active development.
+
 ### Dependencies
 - GoFlow - https://github.com/trustmaster/goflow
 
