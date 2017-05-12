@@ -1,14 +1,8 @@
 ## Blow - Flow-based bioinformatics library written in Go
 
-Status as of Sept 24 2015: Not in active development.
+# UPDATE: Project Deprecated!
+
+See [SciPipe](http://scipipe.org) and [FlowBase](http://flowbase.org) instead!
 
 ### Dependencies
 - GoFlow - https://github.com/trustmaster/goflow
-
-### Related projects
-- BioGo - https://code.google.com/p/biogo/
-
-More info to come ...
-
-
-Author: Samuel Lampa
